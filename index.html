@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAPNIL AUTO - স্বপ্নিল অটো</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white transition-colors duration-300">
+    <!-- Language Toggle -->
+    <div class="absolute top-4 right-4">
+        <button id="lang-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200">
+            বাংলা
+        </button>
+    </div>
+
+    <!-- Main Title Box (Top Left Corner) -->
+    <div class="absolute top-4 left-4">
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+            <h1 id="swapnil-auto-title" class="text-4xl font-extrabold">
+                <span id="shop-name">SWAPNIL AUTO</span>
+            </h1>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div id="app" class="min-h-screen flex items-center justify-center dark:text-white p-4">
+        <!-- Login Section 1: Phone/Email Input -->
+        <div id="login-section-1" class="w-full max-w-md">
+            <p id="login-prompt" class="text-center text-gray-600 dark:text-gray-300 mb-6">
+                মোবাইল নম্বর অথবা ইমেইল দিয়ে লগইন করুন
+            </p>
+            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-inner space-y-4 mb-4">
+                <form id="login-form">
+                    <div>
+                        <input type="text" id="phone-email" placeholder="মোবাইল নম্বর অথবা ইমেইল" required
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200">
+                    </div>
+                </form>
+            </div>
+            <button type="button" id="get-otp-btn"
+                    class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-200">
+                ওটিপি নিন
+            </button>
+        </div>
+
+        <!-- Login Section 2: OTP & Name Input -->
+        <div id="login-section-2" class="space-y-4 hidden w-full max-w-md">
+            <p id="otp-prompt" class="text-center text-gray-600 dark:text-gray-300 mb-6">
+                আপনার মোবাইলে পাঠানো ওটিপি দিন
+            </p>
+            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-inner space-y-4">
+                <form id="otp-form">
+                    <div>
+                        <input type="text" id="otp-input" placeholder="ওটিপি দিন" required
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200">
+                    </div>
+                    <div>
+                        <input type="text" id="name-input" placeholder="আপনার নাম লিখুন" required
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200">
+                    </div>
+                    <button type="button" id="login-btn"
+                            class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-all duration-200">
+                        লগ ইন করুন
+                    </button>
+                    <button type="button" id="back-btn"
+                            class="w-full mt-2 text-gray-600 dark:text-gray-300 py-2 rounded-lg font-semibold hover:text-gray-900 dark:hover:text-white transition-all duration-200">
+                        ফিরে যান
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main Content (hidden initially) -->
+        <div id="main-content" class="hidden w-full max-w-md">
+            <div id="welcome-message" class="text-center text-gray-700 dark:text-gray-300 text-lg font-semibold mb-6"></div>
+
+            <!-- Car Brand Selection -->
+            <div id="brand-selection">
+                <p id="brand-prompt" class="mb-2 text-gray-700 dark:text-gray-300">অনুগ্রহ করে আপনার গাড়ির ব্র্যান্ড নির্বাচন করুন</p>
+                <select id="car-brand"
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200">
+                    <option value="" selected disabled>ব্র্যান্ড নির্বাচন করুন</option>
+                </select>
+            </div>
+
+            <!-- Car Model Selection (hidden initially) -->
+            <div id="model-selection" class="mt-6 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-inner hidden">
+                <p id="model-prompt" class="mb-2 text-gray-700 dark:text-gray-300">আপনার গাড়ির মডেল বেছে নিন</p>
+                <select id="car-model"
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-200">
+                    <option value="" selected disabled>মডেল নির্বাচন করুন</option>
+                </select>
+            </div>
+
+            <!-- Product Categories (hidden initially) -->
+            <div id="product-categories" class="mt-8 hidden">
+                <h2 id="categories-title" class="text-2xl font-bold mb-4">পণ্যের বিভাগ</h2>
+                <ul class="space-y-3">
+                    <!-- Product list will be populated here by JS -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Car -->
+    <div class="animated-car">🚗</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
